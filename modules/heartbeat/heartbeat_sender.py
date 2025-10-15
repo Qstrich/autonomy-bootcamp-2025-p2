@@ -36,7 +36,7 @@ class HeartbeatSender:
 
     def run(
         self,
-    ):
+    ) -> None:
         """
         Attempt to send a heartbeat message.
         """
@@ -45,11 +45,12 @@ class HeartbeatSender:
             mavutil.mavlink.MAV_AUTOPILOT_INVALID,
             0,  # base_mode
             0,  # custom_mode
-            mavutil.mavlink.MAV_STATE_ACTIVE, 
+            mavutil.mavlink.MAV_STATE_ACTIVE,
         )
 
     def __str__(self) -> str:
         return f"HeartbeatSender(connection={self.connection})"
+
 
 # =================================================================================================
 #                            ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑

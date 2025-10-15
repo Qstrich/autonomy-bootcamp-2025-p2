@@ -77,7 +77,7 @@ class Telemetry:
         cls,
         connection: mavutil.mavfile,
         local_logger: logger.Logger,
-    ):
+    ) -> "tuple[True, Telemetry] | tuple[False, None]":
         """
         Falliable create (instantiation) method to create a Telemetry object.
         """
@@ -98,13 +98,12 @@ class Telemetry:
 
     def run(
         self,
-    ):
+    ) -> "tuple[True, TelemetryData] | tuple[False, None]":
         """
         Receive LOCAL_POSITION_NED and ATTITUDE messages from the drone,
         combining them together to form a single TelemetryData object.
         """
-        
-        
+
         start_time = time.time()
 
         position_msg = None
@@ -129,7 +128,7 @@ class Telemetry:
             # Return the most recent of both, and use the most recent message's timestamp
             if position_msg is not None and attitude_msg is not None:
                 telemetry_data = TelemetryData(
-                    time_since_boot= min(attitude_msg.time_boot_ms ,position_msg.time_boot_ms), 
+                    time_since_boot=min(attitude_msg.time_boot_ms, position_msg.time_boot_ms),
                     x=position_msg.x,
                     y=position_msg.y,
                     z=position_msg.z,

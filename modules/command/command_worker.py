@@ -4,6 +4,7 @@ Command worker to make decisions based on Telemetry Data.
 
 import os
 import pathlib
+import time
 
 from pymavlink import mavutil
 
@@ -19,13 +20,19 @@ from ..common.modules.logger import logger
 def command_worker(
     connection: mavutil.mavfile,
     target: command.Position,
-    args,  # Place your own arguments here
-    # Add other necessary worker arguments here
+    telemetry_queue: queue_proxy_wrapper.QueueProxyWrapper,
+    report_queue: queue_proxy_wrapper.QueueProxyWrapper,
+    controller: worker_controller.WorkerController,
 ) -> None:
     """
-    Worker process.
+    Worker process. Makes decisions based on telemetry data.
 
-    args... describe what the arguments are
+    Args:
+        connection: MAVLink connection to the drone
+        target: Target position for the command
+        input_queue: Queue to receive telemetry data
+        output_queue: Queue to send command results
+        controller: Controller to manage worker lifecycle
     """
     # =============================================================================================
     #                          ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑
@@ -48,8 +55,31 @@ def command_worker(
     #                          ↓ BOOTCAMPERS MODIFY BELOW THIS COMMENT ↓
     # =============================================================================================
     # Instantiate class object (command.Command)
+    success, cmd = command.Command.create(
+        connection=connection, target=target, local_logger=local_logger
+    )
+
+    if not success or cmd is None:
+        local_logger.error("Failed to create Command object, exiting worker", True)
+        return
+    local_logger.info("Command created", True)
 
     # Main loop: do work.
+    while not controller.is_exit_requested():
+        controller.check_pause()
+        try:
+            if telemetry_queue is None or telemetry_queue.queue.empty():
+                continue
+            # Wait for telemetry data from input queue
+            message = telemetry_queue.queue.get(timeout=1.0)
+            if message is None:
+                continue
+            # Process the telemetry data and make decisions
+            result = cmd.run(message)
+            if result is not None and report_queue is not None:
+                report_queue.queue.put(result)
+        except Exception as ex:  # pylint: disable=broad-exception-caught
+            local_logger.error(f"Exception in main loop: {ex}", True)
 
 
 # =================================================================================================

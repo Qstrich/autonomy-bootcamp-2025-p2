@@ -54,18 +54,19 @@ def telemetry_worker(
     if not success:
         local_logger.error("Failed to create Telemetry", True)
         return
-    
+
     local_logger.info("Telemetry created", True)
     # Main loop: do work.
     while not controller.is_exit_requested():
         controller.check_pause()
         success, telemetry_data = telem.run()
 
-        if success: #Success
+        if success:  # Success
             telemetry_queue.queue.put(telemetry_data)
             local_logger.info(f"Sent telemetry data: {telemetry_data}", True)
-        else: # Timeout occurred, restart and try again
+        else:  # Timeout occurred, restart and try again
             local_logger.warning("Telemetry timeout, restarting", True)
+
 
 # =================================================================================================
 #                            ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑
