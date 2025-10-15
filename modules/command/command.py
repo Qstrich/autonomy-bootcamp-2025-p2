@@ -97,9 +97,7 @@ class Command:  # pylint: disable=too-many-instance-attributes
                 self.target.z,  # param7 (target altitude)
             )
             # String to return to main: "CHANGE_ALTITUDE: {amount you changed it by, delta height in meters}"
-            action = f"CHANGE ALTITUDE: {delta_z}"
-
-            return True, action
+            return True, f"CHANGE ALTITUDE: {delta_z:.2f}"
         # Adjust direction (yaw) using MAV_CMD_CONDITION_YAW (115). Must use relative angle to current state
         # String to return to main: "CHANGING_YAW: {degree you changed it by in range [-180, 180]}"
         # Positive angle is counter-clockwise as in a right handed system
@@ -119,17 +117,17 @@ class Command:  # pylint: disable=too-many-instance-attributes
                 mavutil.mavlink.MAV_CMD_CONDITION_YAW,
                 0,
                 yaw_diff_deg,
-                5,
+                5.0,
                 direction,
                 1,
                 0,
                 0,
                 0,
             )
-            return f"CHANGE YAW: {yaw_diff_deg}"
+            return True, f"CHANGE YAW: {yaw_diff_deg:.2f}"
 
         # If no command was sent, return None explicitly
-        return None
+        return False, None
 
 
 # =================================================================================================

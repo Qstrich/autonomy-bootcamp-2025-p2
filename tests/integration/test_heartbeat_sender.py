@@ -50,8 +50,7 @@ def stop(
     """
     Stop the workers.
     """
-    if controller is not None:
-        controller.request_exit()
+    controller.request_exit()
 
 
 # =================================================================================================

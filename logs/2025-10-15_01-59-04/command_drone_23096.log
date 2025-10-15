@@ -1,0 +1,10 @@
+01:59:05: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\mock_drones\command_drone.py | main | 45] Logger initialized
+01:59:05: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\mock_drones\command_drone.py | main | 76] Received a valid command
+01:59:05: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\mock_drones\command_drone.py | main | 76] Received a valid command
+01:59:07: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\mock_drones\command_drone.py | main | 76] Received a valid command
+01:59:08: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\mock_drones\command_drone.py | main | 76] Received a valid command
+01:59:08: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\mock_drones\command_drone.py | main | 76] Received a valid command
+01:59:09: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\mock_drones\command_drone.py | main | 76] Received a valid command
+01:59:09: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\mock_drones\command_drone.py | main | 76] Received a valid command
+01:59:10: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\mock_drones\command_drone.py | main | 76] Received a valid command
+01:59:13: [ERROR] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\mock_drones\command_drone.py | main | 51] Sent incorrect message type or timed out, still expecting mesages
