@@ -22,7 +22,7 @@ class HeartbeatReceiver:
         cls,
         connection: mavutil.mavfile,
         local_logger: logger.Logger,
-    )  -> "tuple[True, HeartbeatReceiver] | tuple[False, None]":
+    ) -> "tuple[True, HeartbeatReceiver] | tuple[False, None]":
         """
         Falliable create (instantiation) method to create a HeartbeatReceiver object.
         """
@@ -40,8 +40,8 @@ class HeartbeatReceiver:
         self.connection = connection
         self.local_logger = local_logger
         self.missed_heartbeats = 0
-        self.status = "Connected" 
-        self.DISCONNECT_THRESHOLD = 5  
+        self.status = "Connected"
+        self.DISCONNECT_THRESHOLD = 5
 
     def run(
         self,
@@ -51,7 +51,7 @@ class HeartbeatReceiver:
         If disconnected for over a threshold number of periods,
         the connection is considered disconnected.
         """
-         # Try to receive a HEARTBEAT message with 1 second timeout
+        # Try to receive a HEARTBEAT message with 1 second timeout
         msg = self.connection.recv_match(type="HEARTBEAT", blocking=True, timeout=1.0)
 
         if msg and msg.get_type() == "HEARTBEAT":
@@ -71,7 +71,6 @@ class HeartbeatReceiver:
                 )
 
         return self.status
-
 
 
 # =================================================================================================

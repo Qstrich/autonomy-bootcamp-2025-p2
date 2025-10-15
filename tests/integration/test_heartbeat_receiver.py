@@ -5,7 +5,7 @@ Test the heartbeat reciever worker with a mocked drone.
 import multiprocessing as mp
 import subprocess
 import threading
-import time 
+import time
 
 from pymavlink import mavutil
 
@@ -73,6 +73,7 @@ def read_queue(
             status = report_queue.queue.get()
             main_logger.info(f"Worker status: {status}", True)
         time.sleep(0.1)  # Small sleep to avoid busy waiting
+
 
 # =================================================================================================
 #                            ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑

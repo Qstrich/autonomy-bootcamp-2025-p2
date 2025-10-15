@@ -56,7 +56,7 @@ def command_worker(
     # =============================================================================================
     # Instantiate class object (command.Command)
     success, cmd = command.Command.create(
-        connection=connection, target=target, local_logger=local_logger
+        connection, target, local_logger
     )
 
     if not success or cmd is None:
@@ -67,19 +67,21 @@ def command_worker(
     # Main loop: do work.
     while not controller.is_exit_requested():
         controller.check_pause()
-        try:
-            if telemetry_queue is None or telemetry_queue.queue.empty():
+        if not telemetry_queue.queue.empty():
+            telemetry_data = telemetry_queue.queue.get()
+            # local_logger.info(f"Received telemetry: {telemetry_data}", True)
+
+            if telemetry_data is None:
                 continue
-            # Wait for telemetry data from input queue
-            message = telemetry_queue.queue.get(timeout=1.0)
-            if message is None:
-                continue
-            # Process the telemetry data and make decisions
-            result = cmd.run(message)
-            if result is not None and report_queue is not None:
-                report_queue.queue.put(result)
-        except Exception as ex:  # pylint: disable=broad-exception-caught
-            local_logger.error(f"Exception in main loop: {ex}", True)
+
+            result, action = cmd.run(telemetry_data)
+
+            if result and action is not None:
+                # Send action string to report queue
+                report_queue.queue.put(action)
+                # local_logger.info(f"Action taken: {action}", True)
+        else:
+            time.sleep(0.01)  # Small sleep when queue is empty
 
 
 # =================================================================================================
