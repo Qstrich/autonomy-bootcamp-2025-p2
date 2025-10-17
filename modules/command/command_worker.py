@@ -55,9 +55,7 @@ def command_worker(
     #                          ↓ BOOTCAMPERS MODIFY BELOW THIS COMMENT ↓
     # =============================================================================================
     # Instantiate class object (command.Command)
-    success, cmd = command.Command.create(
-        connection, target, local_logger
-    )
+    success, cmd = command.Command.create(connection, target, local_logger)
 
     if not success or cmd is None:
         local_logger.error("Failed to create Command object, exiting worker", True)
@@ -80,8 +78,6 @@ def command_worker(
                 # Send action string to report queue
                 report_queue.queue.put(action)
                 # local_logger.info(f"Action taken: {action}", True)
-        else:
-            time.sleep(0.01)  # Small sleep when queue is empty
 
 
 # =================================================================================================

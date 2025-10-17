@@ -146,8 +146,6 @@ class Telemetry:
                 self.local_logger.info("Created TelemetryData", True)
                 return True, telemetry_data
 
-            time.sleep(0.01)
-
         # Didn't receive both messages
         self.local_logger.error("Timeout: Did not receive both messages within 1 second", True)
         return False, None

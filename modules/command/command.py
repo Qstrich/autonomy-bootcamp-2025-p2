@@ -70,14 +70,16 @@ class Command:  # pylint: disable=too-many-instance-attributes
         """
         Make a decision based on received telemetry data.
         """
-    
+
         # Log average velocity for this trip so far
         vx, vy, vz = telemetry_data.x_velocity, telemetry_data.y_velocity, telemetry_data.z_velocity
         self.velocity_history.append((vx, vy, vz))
         avg_vx = sum(v[0] for v in self.velocity_history) / len(self.velocity_history)
         avg_vy = sum(v[1] for v in self.velocity_history) / len(self.velocity_history)
         avg_vz = sum(v[2] for v in self.velocity_history) / len(self.velocity_history)
-        self.local_logger.info(f"AVERAGE VELOCITY: ({avg_vx:.2f}, {avg_vy:.2f}, {avg_vz:.2f}) m/s", True)
+        self.local_logger.info(
+            f"AVERAGE VELOCITY: ({avg_vx:.2f}, {avg_vy:.2f}, {avg_vz:.2f}) m/s", True
+        )
 
         delta_z = self.target.z - telemetry_data.z
         if abs(delta_z) > self.HEIGHT_TOLERANCE:
