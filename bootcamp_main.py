@@ -97,17 +97,22 @@ def main() -> int:
 
     # Create worker properties for each worker type (what inputs it takes, how many workers)
     # Heartbeat sender
-    heartbeat_sender_properties = worker_manager.WorkerProperties.create(
+    result, heartbeat_sender_properties = worker_manager.WorkerProperties.create(
         num_workers=HEARTBEAT_SENDER_WORKER_COUNT,
         worker_function=heartbeat_sender_worker.heartbeat_sender_worker,
         worker_kwargs={
             "connection": connection,
             "controller": controller,
         },
+        input_queues=[],
+        output_queues=[],
+        local_logger=main_logger,
     )
-
+    if not result:
+        main_logger.error("Failed to create heartbeat sender properties")
+        return -1
     # Heartbeat receiver
-    heartbeat_receiver_properties = worker_manager.WorkerProperties.create(
+    result, heartbeat_receiver_properties = worker_manager.WorkerProperties.create(
         num_workers=HEARTBEAT_RECEIVER_WORKER_COUNT,
         worker_function=heartbeat_receiver_worker.heartbeat_receiver_worker,
         worker_kwargs={
@@ -115,10 +120,17 @@ def main() -> int:
             "heartbeat_queue": heartbeat_queue,
             "controller": controller,
         },
+        input_queues=[],
+        output_queues=[heartbeat_queue],
+        controller=controller,
+        local_logger=main_logger,
     )
+    if not result:
+        main_logger.error("Failed to create heartbeat receiver properties")
+        return -1
 
     # Telemetry
-    telemetry_properties = worker_manager.WorkerProperties.create(
+    result, telemetry_properties = worker_manager.WorkerProperties.create(
         num_workers=TELEMETRY_WORKER_COUNT,
         worker_function=telemetry_worker.telemetry_worker,
         worker_kwargs={
@@ -126,10 +138,17 @@ def main() -> int:
             "telemetry_queue": telemetry_queue,
             "controller": controller,
         },
+        input_queues=[],
+        output_queues=[telemetry_queue],
+        controller=controller,
+        local_logger=main_logger,
     )
+    if not result:
+        main_logger.error("Failed to create telemetry properties")
+        return -1
 
     # Command
-    command_properties = worker_manager.WorkerProperties.create(
+    result, command_properties = worker_manager.WorkerProperties.create(
         num_workers=COMMAND_WORKER_COUNT,
         worker_function=command_worker.command_worker,
         worker_kwargs={
@@ -139,7 +158,14 @@ def main() -> int:
             "report_queue": report_queue,
             "controller": controller,
         },
+        input_queues=[telemetry_queue],
+        output_queues=[report_queue],
+        controller=controller,
+        local_logger=main_logger,
     )
+    if not result:
+        main_logger.error("Failed to create command properties")
+        return -1
 
     # Create the workers (processes) and obtain their managers
     heartbeat_sender_manager = worker_manager.WorkerManager(heartbeat_sender_properties)
