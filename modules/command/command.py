@@ -82,7 +82,7 @@ class Command:  # pylint: disable=too-many-instance-attributes
         )
 
         delta_z = self.target.z - telemetry_data.z
-        if abs(delta_z) > self.HEIGHT_TOLERANCE:
+        if telemetry_data.z is not None and abs(delta_z) > self.HEIGHT_TOLERANCE:
             # Use COMMAND_LONG (76) message, assume the target_system=1 and target_componenet=0
             # The appropriate commands to use are instructed below
             self.connection.mav.command_long_send(
@@ -104,30 +104,34 @@ class Command:  # pylint: disable=too-many-instance-attributes
         # Adjust direction (yaw) using MAV_CMD_CONDITION_YAW (115). Must use relative angle to current state
         # String to return to main: "CHANGING_YAW: {degree you changed it by in range [-180, 180]}"
         # Positive angle is counter-clockwise as in a right handed system
-        dx = self.target.x - telemetry_data.x
-        dy = self.target.y - telemetry_data.y
-        target_yaw_rad = math.atan2(dy, dx)
-        target_yaw_deg = math.degrees(target_yaw_rad)
-        now_yaw_rad = telemetry_data.yaw
-        now_yaw_deg = math.degrees(now_yaw_rad)
-        yaw_diff_deg = target_yaw_deg - now_yaw_deg
-        yaw_diff_deg = (yaw_diff_deg + 180) % 360 - 180
-        if abs(yaw_diff_deg) > self.ANGLE_TOLERANCE:
-            direction = 1 if yaw_diff_deg > 0 else -1
-            self.connection.mav.command_long_send(
-                1,
-                0,
-                mavutil.mavlink.MAV_CMD_CONDITION_YAW,
-                0,
-                yaw_diff_deg,
-                5.0,
-                direction,
-                1,
-                0,
-                0,
-                0,
-            )
-            return True, f"CHANGE YAW: {yaw_diff_deg:.2f}"
+        if telemetry_data.yaw is not None:
+            dx = self.target.x - telemetry_data.x
+            dy = self.target.y - telemetry_data.y
+            required_yaw = math.atan2(dy, dx)
+            angle_diff = (required_yaw - telemetry_data.yaw + math.pi) % (2 * math.pi) - math.pi
+            if abs(angle_diff) > self.ANGLE_TOLERANCE:
+                # Convert to degrees for command
+                angle_diff_deg = math.degrees(angle_diff)
+                direction = -1 if angle_diff_deg >= 0 else 1  # 1=clockwise, -1=counter-clockwise
+
+                # Send yaw change command (relative)
+                self.connection.mav.command_long_send(
+                    1,  # target_system
+                    0,  # target_component
+                    mavutil.mavlink.MAV_CMD_CONDITION_YAW,  # command (115)
+                    0,  # confirmation
+                    angle_diff_deg,  # param1 (target angle in degrees)
+                    5.0,  # param2 (angular speed in deg/s) - CHANGE FROM 0
+                    direction,  # param3 (direction: 1=clockwise, -1=counter-clockwise, not used for relative)
+                    1,  # param4 (relative=1, absolute=0)
+                    0,  # param5
+                    0,  # param6
+                    0,  # param7
+                )
+
+                action = f"CHANGE YAW: {angle_diff_deg:.2f}"
+                # self.local_logger.info(action, True)
+                return True, action
 
         # If no command was sent, return None explicitly
         return False, None

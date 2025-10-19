@@ -41,7 +41,7 @@ TELEMETRY_WORKER_COUNT = 1
 COMMAND_WORKER_COUNT = 1
 
 # Any other constants
-TARGET_POSITION = command.Position(20, 20, 10)
+TARGET_POSITION = command.Position(10, 20, 30)
 MAIN_LOOP_DURATION = 100
 
 # =================================================================================================

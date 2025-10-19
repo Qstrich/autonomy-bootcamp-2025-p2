@@ -1,0 +1,14 @@
+12:26:11: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\heartbeat\heartbeat_sender_worker.py | heartbeat_sender_worker | 45] Logger initialized
+12:26:11: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\heartbeat\heartbeat_sender_worker.py | heartbeat_sender_worker | 57] HeartbeatSender created successfully
+12:26:11: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\heartbeat\heartbeat_sender_worker.py | heartbeat_sender_worker | 62] Heartbeat sent
+12:26:12: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\heartbeat\heartbeat_sender_worker.py | heartbeat_sender_worker | 62] Heartbeat sent
+12:26:13: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\heartbeat\heartbeat_sender_worker.py | heartbeat_sender_worker | 62] Heartbeat sent
+12:26:14: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\heartbeat\heartbeat_sender_worker.py | heartbeat_sender_worker | 62] Heartbeat sent
+12:26:16: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\heartbeat\heartbeat_sender_worker.py | heartbeat_sender_worker | 62] Heartbeat sent
+12:26:17: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\heartbeat\heartbeat_sender_worker.py | heartbeat_sender_worker | 62] Heartbeat sent
+12:26:18: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\heartbeat\heartbeat_sender_worker.py | heartbeat_sender_worker | 62] Heartbeat sent
+12:26:19: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\heartbeat\heartbeat_sender_worker.py | heartbeat_sender_worker | 62] Heartbeat sent
+12:26:20: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\heartbeat\heartbeat_sender_worker.py | heartbeat_sender_worker | 62] Heartbeat sent
+12:26:21: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\heartbeat\heartbeat_sender_worker.py | heartbeat_sender_worker | 62] Heartbeat sent
+12:26:22: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\heartbeat\heartbeat_sender_worker.py | heartbeat_sender_worker | 62] Heartbeat sent
+12:26:23: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\heartbeat\heartbeat_sender_worker.py | heartbeat_sender_worker | 65] Worker exiting
