@@ -94,7 +94,7 @@ class Telemetry:
         # Do any intializiation here
         self.connection = connection
         self.local_logger = local_logger
-        self.TIMEOUT = 1.0
+        self.timeout = 1.0
 
     def run(
         self,
@@ -110,7 +110,7 @@ class Telemetry:
         attitude_msg = None
 
         # Try to receive both messages within timeout
-        while time.time() - start_time < self.TIMEOUT:
+        while time.time() - start_time < self.timeout:
             # Read MAVLink message LOCAL_POSITION_NED (32)
             if position_msg is None:
                 msg = self.connection.recv_match(type="LOCAL_POSITION_NED", blocking=False)

@@ -135,24 +135,28 @@ def main() -> int:
     )
     # Create worker managers
     heartbeat_sender_manager = worker_manager.WorkerManager.create(
+        class_private_create_key=None,
         workers=heartbeat_sender_properties.workers,
         worker_properties=heartbeat_sender_properties,
         local_logger=main_logger,
     )
 
     heartbeat_receiver_manager = worker_manager.WorkerManager.create(
+        class_private_create_key=None,
         workers=heartbeat_receiver_properties.workers,
         worker_properties=heartbeat_receiver_properties,
         local_logger=main_logger,
     )
 
     telemetry_manager = worker_manager.WorkerManager.create(
+        class_private_create_key=None,
         workers=telemetry_properties.workers,
         worker_properties=telemetry_properties,
         local_logger=main_logger,
     )
 
     command_manager = worker_manager.WorkerManager.create(
+        class_private_create_key=None,
         workers=command_properties.workers,
         worker_properties=command_properties,
         local_logger=main_logger,

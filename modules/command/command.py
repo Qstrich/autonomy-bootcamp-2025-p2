@@ -59,8 +59,8 @@ class Command:  # pylint: disable=too-many-instance-attributes
         self.local_logger = local_logger
 
         # Thresholds
-        self.HEIGHT_TOLERANCE = 0.5  # meters
-        self.ANGLE_TOLERANCE = math.radians(5)
+        self.height_tolerance = 0.5  # meters
+        self.angle_tolerance = math.radians(5)
 
         self.velocity_history = []
 
@@ -82,7 +82,7 @@ class Command:  # pylint: disable=too-many-instance-attributes
         )
 
         delta_z = self.target.z - telemetry_data.z
-        if telemetry_data.z is not None and abs(delta_z) > self.HEIGHT_TOLERANCE:
+        if telemetry_data.z is not None and abs(delta_z) > self.height_tolerance:
             # Use COMMAND_LONG (76) message, assume the target_system=1 and target_componenet=0
             # The appropriate commands to use are instructed below
             self.connection.mav.command_long_send(
@@ -109,7 +109,7 @@ class Command:  # pylint: disable=too-many-instance-attributes
             dy = self.target.y - telemetry_data.y
             required_yaw = math.atan2(dy, dx)
             angle_diff = (required_yaw - telemetry_data.yaw + math.pi) % (2 * math.pi) - math.pi
-            if abs(angle_diff) > self.ANGLE_TOLERANCE:
+            if abs(angle_diff) > self.angle_tolerance:
                 # Convert to degrees for command
                 angle_diff_deg = math.degrees(angle_diff)
                 direction = -1 if angle_diff_deg >= 0 else 1  # 1=clockwise, -1=counter-clockwise

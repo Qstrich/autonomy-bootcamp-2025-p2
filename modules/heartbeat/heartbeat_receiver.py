@@ -41,7 +41,7 @@ class HeartbeatReceiver:
         self.local_logger = local_logger
         self.missed_heartbeats = 0
         self.status = "Connected"
-        self.DISCONNECT_THRESHOLD = 5
+        self.disconnect_threshold = 5
 
     def run(
         self,
@@ -64,7 +64,7 @@ class HeartbeatReceiver:
             self.missed_heartbeats += 1
             self.local_logger.warning(f"Missed heartbeat (count: {self.missed_heartbeats})", True)
 
-            if self.missed_heartbeats >= self.DISCONNECT_THRESHOLD:
+            if self.missed_heartbeats >= self.disconnect_threshold:
                 self.status = "Disconnected"
                 self.local_logger.error(
                     f"Connection lost after {self.missed_heartbeats} missed heartbeats", True
