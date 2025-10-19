@@ -82,7 +82,7 @@ def main() -> int:
     # =============================================================================================
     #                          ↓ BOOTCAMPERS MODIFY BELOW THIS COMMENT ↓
     # =============================================================================================
-    controller = worker_controller.WorkerController()
+    controller = worker_controller.WorkerController.create()
 
     # Create a multiprocess manager for synchronized queues
     mp_manager = mp.Manager()
@@ -92,9 +92,8 @@ def main() -> int:
     telemetry_queue = queue_proxy_wrapper.QueueProxyWrapper(mp_manager, TELEMETRY_QUEUE_MAX_SIZE)
     report_queue = queue_proxy_wrapper.QueueProxyWrapper(mp_manager, REPORT_QUEUE_MAX_SIZE)
 
-    # Create worker properties for each worker type (what inputs it takes, how many workers)
-    # Heartbeat sender
-    heartbeat_sender_properties = worker_manager.WorkerProperties(
+    # Create worker properties
+    heartbeat_sender_properties = worker_manager.WorkerProperties.create(
         num_workers=HEARTBEAT_SENDER_WORKER_COUNT,
         worker_function=heartbeat_sender_worker.heartbeat_sender_worker,
         worker_kwargs={
@@ -103,8 +102,7 @@ def main() -> int:
         },
     )
 
-    # Heartbeat receiver
-    heartbeat_receiver_properties = worker_manager.WorkerProperties(
+    heartbeat_receiver_properties = worker_manager.WorkerProperties.create(
         num_workers=HEARTBEAT_RECEIVER_WORKER_COUNT,
         worker_function=heartbeat_receiver_worker.heartbeat_receiver_worker,
         worker_kwargs={
@@ -114,8 +112,7 @@ def main() -> int:
         },
     )
 
-    # Telemetry
-    telemetry_properties = worker_manager.WorkerProperties(
+    telemetry_properties = worker_manager.WorkerProperties.create(
         num_workers=TELEMETRY_WORKER_COUNT,
         worker_function=telemetry_worker.telemetry_worker,
         worker_kwargs={
@@ -125,8 +122,7 @@ def main() -> int:
         },
     )
 
-    # Command
-    command_properties = worker_manager.WorkerProperties(
+    command_properties = worker_manager.WorkerProperties.create(
         num_workers=COMMAND_WORKER_COUNT,
         worker_function=command_worker.command_worker,
         worker_kwargs={
@@ -137,12 +133,30 @@ def main() -> int:
             "controller": controller,
         },
     )
+    # Create worker managers
+    heartbeat_sender_manager = worker_manager.WorkerManager.create(
+        workers=heartbeat_sender_properties.workers,
+        worker_properties=heartbeat_sender_properties,
+        local_logger=main_logger,
+    )
 
-    # Create the workers (processes) and obtain their managers
-    heartbeat_sender_manager = worker_manager.WorkerManager(heartbeat_sender_properties)
-    heartbeat_receiver_manager = worker_manager.WorkerManager(heartbeat_receiver_properties)
-    telemetry_manager = worker_manager.WorkerManager(telemetry_properties)
-    command_manager = worker_manager.WorkerManager(command_properties)
+    heartbeat_receiver_manager = worker_manager.WorkerManager.create(
+        workers=heartbeat_receiver_properties.workers,
+        worker_properties=heartbeat_receiver_properties,
+        local_logger=main_logger,
+    )
+
+    telemetry_manager = worker_manager.WorkerManager.create(
+        workers=telemetry_properties.workers,
+        worker_properties=telemetry_properties,
+        local_logger=main_logger,
+    )
+
+    command_manager = worker_manager.WorkerManager.create(
+        workers=command_properties.workers,
+        worker_properties=command_properties,
+        local_logger=main_logger,
+    )
 
     # Start worker processes
     heartbeat_sender_manager.start_workers()
