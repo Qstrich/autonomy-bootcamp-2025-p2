@@ -104,7 +104,7 @@ def main() -> int:
             "connection": connection,
             "controller": controller,
         },
-        input_queues=[],
+        input_queues=[heartbeat_queue],
         output_queues=[],
         local_logger=main_logger,
     )

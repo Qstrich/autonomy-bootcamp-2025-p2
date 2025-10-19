@@ -112,15 +112,14 @@ class Telemetry:
         # Try to receive both messages within timeout
         while time.time() - start_time < self.timeout:
             # Read MAVLink message LOCAL_POSITION_NED (32)
+            msg = self.connection.recv_match(type=["LOCAL_POSITION_NED", "ATTITUDE"], timeout=0.1)
             if position_msg is None:
-                msg = self.connection.recv_match(type="LOCAL_POSITION_NED", blocking=False)
                 if msg and msg.get_type() == "LOCAL_POSITION_NED":
                     position_msg = msg
                     self.local_logger.info("Received LOCAL_POSITION_NED", True)
 
             # Read MAVLink message ATTITUDE (30)
             if attitude_msg is None:
-                msg = self.connection.recv_match(type="ATTITUDE", blocking=False)
                 if msg and msg.get_type() == "ATTITUDE":
                     attitude_msg = msg
                     self.local_logger.info("Received ATTITUDE", True)
