@@ -128,7 +128,7 @@ class Telemetry:
             # Return the most recent of both, and use the most recent message's timestamp
             if position_msg is not None and attitude_msg is not None:
                 telemetry_data = TelemetryData(
-                    time_since_boot=min(attitude_msg.time_boot_ms, position_msg.time_boot_ms),
+                    time_since_boot=max(attitude_msg.time_boot_ms, position_msg.time_boot_ms),
                     x=position_msg.x,
                     y=position_msg.y,
                     z=position_msg.z,

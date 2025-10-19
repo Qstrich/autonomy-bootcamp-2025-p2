@@ -97,7 +97,7 @@ def main() -> int:
 
     # Create worker properties for each worker type (what inputs it takes, how many workers)
     # Heartbeat sender
-    heartbeat_sender_properties = worker_manager.WorkerProperties(
+    heartbeat_sender_properties = worker_manager.WorkerProperties.create(
         num_workers=HEARTBEAT_SENDER_WORKER_COUNT,
         worker_function=heartbeat_sender_worker.heartbeat_sender_worker,
         worker_kwargs={
@@ -107,7 +107,7 @@ def main() -> int:
     )
 
     # Heartbeat receiver
-    heartbeat_receiver_properties = worker_manager.WorkerProperties(
+    heartbeat_receiver_properties = worker_manager.WorkerProperties.create(
         num_workers=HEARTBEAT_RECEIVER_WORKER_COUNT,
         worker_function=heartbeat_receiver_worker.heartbeat_receiver_worker,
         worker_kwargs={
@@ -118,7 +118,7 @@ def main() -> int:
     )
 
     # Telemetry
-    telemetry_properties = worker_manager.WorkerProperties(
+    telemetry_properties = worker_manager.WorkerProperties.create(
         num_workers=TELEMETRY_WORKER_COUNT,
         worker_function=telemetry_worker.telemetry_worker,
         worker_kwargs={
@@ -129,7 +129,7 @@ def main() -> int:
     )
 
     # Command
-    command_properties = worker_manager.WorkerProperties(
+    command_properties = worker_manager.WorkerProperties.create(
         num_workers=COMMAND_WORKER_COUNT,
         worker_function=command_worker.command_worker,
         worker_kwargs={
@@ -159,25 +159,22 @@ def main() -> int:
     # Continue running for 100 seconds or until the drone disconnects
     start_time = time.time()
     while time.time() - start_time < MAIN_LOOP_DURATION:
-        # Read from heartbeat queue
-        if not heartbeat_queue.queue.empty():
-            try:
+
+        try:
+            # Read from heartbeat queue
+            if not heartbeat_queue.queue.empty():
                 heartbeat_status = heartbeat_queue.queue.get_nowait()
                 main_logger.info(f"Heartbeat status: {heartbeat_status}")
 
                 if heartbeat_status == "Disconnected":
                     main_logger.warning("Drone disconnected, exiting")
                     break
-            except queue.Empty:
-                pass
-
-        # Read from report queue
-        if not report_queue.queue.empty():
-            try:
+            # Read from report queue
+            if not report_queue.queue.empty():
                 report = report_queue.queue.get_nowait()
                 main_logger.info(f"Command report: {report}")
-            except queue.Empty:
-                pass
+        except queue.Empty:
+            pass
 
         time.sleep(0.1)
 
@@ -203,7 +200,7 @@ def main() -> int:
 
     # We can reset controller in case we want to reuse it
     # Alternatively, create a new WorkerController instance
-
+    controller.clear_exit()
     # =============================================================================================
     #                          ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑
     # =============================================================================================

@@ -57,7 +57,7 @@ def command_worker(
     # Instantiate class object (command.Command)
     success, cmd = command.Command.create(connection, target, local_logger)
 
-    if not success or cmd is None:
+    if not success:
         local_logger.error("Failed to create Command object, exiting worker", True)
         return
     local_logger.info("Command created", True)
@@ -74,7 +74,7 @@ def command_worker(
 
             result, action = cmd.run(telemetry_data)
 
-            if result and action is not None:
+            if result:
                 # Send action string to report queue
                 report_queue.queue.put(action)
                 # local_logger.info(f"Action taken: {action}", True)

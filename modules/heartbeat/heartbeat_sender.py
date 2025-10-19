@@ -37,7 +37,7 @@ class HeartbeatSender:
 
     def run(
         self,
-    ) -> None:
+    ) -> str:
         """
         Attempt to send a heartbeat message.
         """
@@ -49,7 +49,6 @@ class HeartbeatSender:
             mavutil.mavlink.MAV_STATE_ACTIVE,
         )
 
-    def __str__(self) -> str:
         return f"HeartbeatSender(connection={self.connection})"
 
 

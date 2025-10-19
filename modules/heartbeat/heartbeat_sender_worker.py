@@ -50,7 +50,7 @@ def heartbeat_sender_worker(
     # Instantiate class object (heartbeat_sender.HeartbeatSender)
     # Create HeartbeatSender
     success, sender = heartbeat_sender.HeartbeatSender.create(connection)
-    if not success or sender is None:
+    if not success:
         local_logger.error("Failed to create HeartbeatSender.")
         return
 
