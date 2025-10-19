@@ -1,2 +1,2 @@
-12:26:24: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\common\modules\logger\logger_main_setup.py | setup_main_logger | 62] main logger initialized
-12:26:25: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | main | 116] Connected!
+17:18:49: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\common\modules\logger\logger_main_setup.py | setup_main_logger | 62] main logger initialized
+17:18:50: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | main | 116] Connected!
