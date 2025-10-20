@@ -105,6 +105,8 @@ def main() -> int:
         heartbeat_period=HEARTBEAT_PERIOD,
     )
 
+    main_logger.info("Disconnected!")
+
     # =============================================================================================
     #                          ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑
     # =============================================================================================

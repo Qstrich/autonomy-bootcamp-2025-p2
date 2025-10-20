@@ -66,6 +66,8 @@ def heartbeat_receiver_worker(
         report_queue.queue.put(status)
         local_logger.info(f"Status: {status}", True)
 
+    local_logger.info("Worker Exiting", True)
+
 
 # =================================================================================================
 #                            ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑

@@ -74,6 +74,8 @@ def read_queue(
             main_logger.info(f"Worker status: {status}", True)
         time.sleep(0.1)  # Small sleep to avoid busy waiting
 
+    main_logger.info("Disconnected!", False)
+
 
 # =================================================================================================
 #                            ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑
@@ -141,6 +143,8 @@ def main() -> int:
         report_queue,
         controller,
     )
+
+    main_logger.info("Disconnected!")
     # =============================================================================================
     #                          ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑
     # =============================================================================================

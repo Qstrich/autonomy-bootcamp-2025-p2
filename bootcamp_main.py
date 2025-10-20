@@ -104,8 +104,6 @@ def main() -> int:
             "connection": connection,
             "controller": controller,
         },
-        input_queues=[heartbeat_queue],
-        output_queues=[],
         local_logger=main_logger,
     )
     if not result:
@@ -120,8 +118,6 @@ def main() -> int:
             "heartbeat_queue": heartbeat_queue,
             "controller": controller,
         },
-        input_queues=[],
-        output_queues=[heartbeat_queue],
         controller=controller,
         local_logger=main_logger,
     )
@@ -168,10 +164,10 @@ def main() -> int:
         return -1
 
     # Create the workers (processes) and obtain their managers
-    heartbeat_sender_manager = worker_manager.WorkerManager(heartbeat_sender_properties)
-    heartbeat_receiver_manager = worker_manager.WorkerManager(heartbeat_receiver_properties)
-    telemetry_manager = worker_manager.WorkerManager(telemetry_properties)
-    command_manager = worker_manager.WorkerManager(command_properties)
+    heartbeat_sender_manager = worker_manager.WorkerManager.create(heartbeat_sender_properties)
+    heartbeat_receiver_manager = worker_manager.WorkerManager.create(heartbeat_receiver_properties)
+    telemetry_manager = worker_manager.WorkerManager.create(telemetry_properties)
+    command_manager = worker_manager.WorkerManager.create(command_properties)
 
     # Start worker processes
     heartbeat_sender_manager.start_workers()
