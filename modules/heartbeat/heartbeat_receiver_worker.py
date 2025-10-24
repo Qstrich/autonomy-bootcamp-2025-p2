@@ -59,12 +59,15 @@ def heartbeat_receiver_worker(
     local_logger.info("HeartbeatReceiver created", True)
 
     # Main loop: do work.
+    prev_status = None
     while not controller.is_exit_requested():
         controller.check_pause()
         status = receiver.run()
 
-        report_queue.queue.put(status)
-        local_logger.info(f"Status: {status}", True)
+        if status != prev_status:
+            report_queue.queue.put(status)
+            local_logger.info(f"Status changed to: {status}", True)
+            prev_status = status
 
     local_logger.info("Worker Exiting", True)
 

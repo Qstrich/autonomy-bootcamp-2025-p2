@@ -118,6 +118,7 @@ def main() -> int:
             "heartbeat_queue": heartbeat_queue,
             "controller": controller,
         },
+        output_queues=[heartbeat_queue],
         controller=controller,
         local_logger=main_logger,
     )
@@ -164,10 +165,26 @@ def main() -> int:
         return -1
 
     # Create the workers (processes) and obtain their managers
-    heartbeat_sender_manager = worker_manager.WorkerManager.create(heartbeat_sender_properties)
-    heartbeat_receiver_manager = worker_manager.WorkerManager.create(heartbeat_receiver_properties)
-    telemetry_manager = worker_manager.WorkerManager.create(telemetry_properties)
-    command_manager = worker_manager.WorkerManager.create(command_properties)
+    result, heartbeat_sender_manager = worker_manager.WorkerManager.create(
+        heartbeat_sender_properties
+    )
+    if not result:
+        main_logger.error("Failed to create heartbeat sender manager")
+        return -1
+    result, heartbeat_receiver_manager = worker_manager.WorkerManager.create(
+        heartbeat_receiver_properties
+    )
+    if not result:
+        main_logger.error("Failed to create heartbeat receiver manager")
+        return -1
+    result, telemetry_manager = worker_manager.WorkerManager.create(telemetry_properties)
+    if not result:
+        main_logger.error("Failed to create telemetry manager")
+        return -1
+    result, command_manager = worker_manager.WorkerManager.create(command_properties)
+    if not result:
+        main_logger.error("Failed to create command manager")
+        return -1
 
     # Start worker processes
     heartbeat_sender_manager.start_workers()
