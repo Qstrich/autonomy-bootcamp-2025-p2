@@ -1,6 +1,6 @@
-14:54:21: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\common\modules\logger\logger_main_setup.py | setup_main_logger | 62] main logger initialized
-14:54:22: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | main | 114] Connected!
-14:54:22: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:40: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\common\modules\logger\logger_main_setup.py | setup_main_logger | 62] main logger initialized
+14:44:40: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | main | 114] Connected!
+14:44:41: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 0,
             x: 0.0,
             y: 0.0,
@@ -15,7 +15,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:22: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:41: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 500,
             x: 0.5,
             y: 0.0,
@@ -30,7 +30,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:23: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:42: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 1000,
             x: 1.0,
             y: 0.0,
@@ -45,7 +45,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:23: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:42: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 1500,
             x: 1.5,
             y: 0.0,
@@ -60,7 +60,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:24: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:43: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 2000,
             x: 2.0,
             y: 0.0,
@@ -75,7 +75,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:24: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:43: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 2500,
             x: 2.5,
             y: 0.0,
@@ -90,7 +90,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:25: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:44: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 3000,
             x: 3.0,
             y: 0.0,
@@ -105,7 +105,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:25: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:44: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 3500,
             x: 3.5,
             y: 0.0,
@@ -120,7 +120,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:26: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:45: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 4000,
             x: 4.0,
             y: 0.0,
@@ -135,7 +135,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:26: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:45: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 4500,
             x: 4.5,
             y: 0.0,
@@ -150,7 +150,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:30: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:49: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 0,
             x: 0.0,
             y: 0.0,
@@ -165,7 +165,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:30: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:49: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 500,
             x: 0.3333333432674408,
             y: 0.0,
@@ -180,7 +180,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:31: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:50: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 1000,
             x: 0.6666666865348816,
             y: 0.0,
@@ -195,7 +195,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:31: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:50: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 1500,
             x: 1.0,
             y: 0.0,
@@ -210,7 +210,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:32: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:51: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 2000,
             x: 1.6666666269302368,
             y: 0.0,
@@ -225,7 +225,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:32: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:51: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 2500,
             x: 2.0,
             y: 0.0,
@@ -240,7 +240,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:33: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:52: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 3000,
             x: 2.6666667461395264,
             y: 0.0,
@@ -255,7 +255,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:33: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:52: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 3500,
             x: 3.0,
             y: 0.0,
@@ -270,7 +270,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:34: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:53: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 4000,
             x: 3.6666667461395264,
             y: 0.0,
@@ -285,7 +285,7 @@
             pitch_speed: 0.0,
             yaw_speed: 3.1415927410125732
         }
-14:54:34: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
+14:44:53: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_telemetry.py | read_queue | 72] Received telemetry: {
             time_since_boot: 4500,
             x: 4.0,
             y: 0.0,

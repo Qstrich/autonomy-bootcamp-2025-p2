@@ -1,3 +1,27 @@
-14:43:47: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\common\modules\logger\logger_main_setup.py | setup_main_logger | 62] main logger initialized
-14:43:47: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | main | 118] Connected!
-14:44:08: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | main | 147] Disconnected!
+12:55:44: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\modules\common\modules\logger\logger_main_setup.py | setup_main_logger | 62] main logger initialized
+12:55:45: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | main | 118] Connected!
+12:55:45: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:55:46: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:55:47: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:55:48: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:55:48: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:55:49: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:55:50: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:55:51: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:55:52: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:55:53: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:55:54: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Disconnected
+12:55:55: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Disconnected
+12:55:56: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Disconnected
+12:55:57: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Disconnected
+12:55:58: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:55:59: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:56:00: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:56:01: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:56:01: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:56:02: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:56:03: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:56:04: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:56:05: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | read_queue | 74] Worker status: Connected
+12:56:05: [INFO] Disconnected!
+12:56:06: [INFO] [C:\Users\jason\Desktop\autonomy-bootcamp-2025-p2\tests\integration\test_heartbeat_receiver.py | main | 147] Disconnected!
